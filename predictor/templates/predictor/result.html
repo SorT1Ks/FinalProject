@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат заявки</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'predictor/style.css' %}">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto;
+            background: rgba(44, 122, 75, 0.12);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80vw;
+            max-width: 1100px;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(40,150,90,0.25);
+            border: 4px solid #b3dfb2;
+            background: #f6fff8;
+        }
+        .close {
+            position: absolute;
+            top: 42px;
+            right: 80px;
+            color: #249c55;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1050;
+            text-shadow: 0 2px 18px #fff, 0 0 3px #b3dfb2;
+        }
+        .img-preview-block {
+            margin-bottom: 24px;
+            border: 1.3px solid #b9e6ca;
+            border-radius: 11px;
+            padding: 10px 0 16px 0;
+            background: #f7fcf9;
+        }
+        .img-preview-block img {
+            display: block;
+            margin: 0 auto 7px auto;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: box-shadow 0.15s;
+        }
+        .img-preview-block button {
+            background: #e8f6ef;
+            color: #249c55;
+            border: 1.3px solid #b3dfb2;
+            padding: 5px 18px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.17s, color 0.17s;
+        }
+        .img-preview-block button:hover {
+            background: #b9e6ca;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .modal-content { width: 97vw; }
+            .close { right: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="credit-result-container">
+        <h2>Результат розгляду заявки</h2>
+        <p>
+            Ваш кредит:
+            {% if "Схвалено" in result %}
+                <span class="approved">{{ result }}</span>
+            {% else %}
+                <span class="rejected">{{ result }}</span>
+            {% endif %}
+        </p>
+        <a href="{% url 'loan_form' %}">Спробувати ще раз</a>
+        <hr>
+        <h3>Візуалізації:</h3>
+
+        <div class="img-preview-block">
+            <img id="img1" src="{% static 'predictor/plots/loan_status_dist.png' %}" width="400" alt="Розподіл статусу кредитів">
+            <div style="text-align:center">
+                <button onclick="openModal('img1')">Збільшити</button>
+            </div>
+        </div>
+        <div class="img-preview-block">
+            <img id="img2" src="{% static 'predictor/plots/feature_importance.png' %}" width="400" alt="Важливість ознак">
+            <div style="text-align:center">
+                <button onclick="openModal('img2')">Збільшити</button>
+            </div>
+        </div>
+        <div class="img-preview-block">
+            <img id="img3" src="{% static 'predictor/plots/corr_heatmap.png' %}" width="400" alt="Теплокарта кореляцій">
+            <div style="text-align:center">
+                <button onclick="openModal('img3')">Збільшити</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="imgModal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal(event)">&times;</span>
+        <img class="modal-content" id="modalImg" src="" alt="Велике зображення">
+    </div>
+
+    <script>
+        // Відкриває вікно з потрібним зображенням
+        function openModal(imgId) {
+            var modal = document.getElementById('imgModal');
+            var modalImg = document.getElementById("modalImg");
+            var img = document.getElementById(imgId);
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+        // Закриває вікно
+        function closeModal(event) {
+            // Закриває зображення
+            if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+                document.getElementById('imgModal').style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

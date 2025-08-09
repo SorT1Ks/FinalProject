@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат передбачення</title>
+</head>
+<body>
+    <h2>Результат: {{ result }}</h2>
+    <a href="{% url 'index' %}">Повернутись до форми</a>
+    <hr>
+    <h3>Візуалізації:</h3>
+    <img src="/static/plots/loan_status_dist.png" width="400">
+    <img src="/static/plots/feature_importance.png" width="400">
+    <img src="/static/plots/corr_heatmap.png" width="400">
+</body>
+</html>

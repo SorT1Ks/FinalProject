@@ -1,0 +1,130 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #e8f6ef 0%, #b9e6ca 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    background: #ffffffee;
+    max-width: 500px;
+    margin: 60px auto 0 auto;
+    padding: 36px 32px 32px 32px;
+    border-radius: 18px;
+    box-shadow: 0 6px 30px rgba(40, 150, 90, 0.13), 0 1.5px 6px rgba(40, 150, 90, 0.07);
+}
+
+h1, h2 {
+    color: #2c7a4b;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+hr {
+    border: none;
+    border-top: 1.5px solid #b3dfb2;
+    margin: 22px 0;
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    color: #276c44;
+    margin-bottom: 7px;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 9px 12px;
+    margin-bottom: 18px;
+    border-radius: 7px;
+    border: 1.4px solid #b9e6ca;
+    background: #f7fcf9;
+    font-size: 16px;
+    transition: border 0.18s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    outline: none;
+    border: 1.7px solid #34a853;
+    background: #e9fdf2;
+}
+
+button, input[type="submit"] {
+    background: linear-gradient(90deg, #34a853 60%, #2ecc71 100%);
+    color: #fff;
+    border: none;
+    padding: 11px 30px;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(52,168,83,0.08);
+    transition: background 0.22s, box-shadow 0.22s;
+}
+button:hover, input[type="submit"]:hover {
+    background: linear-gradient(90deg, #2ecc71 60%, #34a853 100%);
+    box-shadow: 0 4px 20px rgba(44,122,75,0.16);
+}
+
+.credit-result-container {
+    background: #f6fff8;
+    border: 2.5px solid #b3dfb2;
+    max-width: 420px;
+    margin: 80px auto 0 auto;
+    padding: 40px 32px 30px 32px;
+    border-radius: 18px;
+    box-shadow: 0 6px 30px rgba(40, 150, 90, 0.10);
+    text-align: center;
+}
+.approved {
+    color: #249c55;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+}
+.rejected {
+    color: #d93434;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+}
+a {
+    display: inline-block;
+    margin-top: 18px;
+    color: #249c55;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+a:hover {
+    color: #1a6d3b;
+    text-decoration: underline;
+}
+
+img {
+    border-radius: 12px;
+    border: 1.5px solid #b9e6ca;
+    margin: 10px 10px 0 0;
+    background: #f7fcf9;
+}
+
+.main-container h1 {
+    text-align: center;
+}
+
+.main-container form button {
+    display: block;
+    margin: 16px auto 0 auto;
+}
+
+.main-container form input[type="text"],
+.main-container form input[type="number"],
+.main-container form select {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}

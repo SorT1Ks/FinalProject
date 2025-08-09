@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Approval Prediction</title>
+</head>
+<body>
+    <h2>Оцініть, чи схвалять вам займ</h2>
+    <form method="post" action="{% url 'predict' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Передбачити</button>
+    </form>
+    {% if result %}
+        <h3>Результат: {{ result }}</h3>
+    {% endif %}
+    <hr>
+    <h3>Візуалізації:</h3>
+    <img src="/static/plots/loan_status_dist.png" width="400">
+    <img src="/static/plots/feature_importance.png" width="400">
+    <img src="/static/plots/corr_heatmap.png" width="400">
+</body>
+</html>

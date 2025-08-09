@@ -1,0 +1,1 @@
+# No DB models needed for this app
